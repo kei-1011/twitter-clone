@@ -1,2 +1,2 @@
 <?php
-include 'core/database/connection.php';
+require_once 'core/init.php';
