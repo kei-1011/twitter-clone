@@ -1,11 +1,8 @@
 <?php
 require_once 'core/init.php';
 ?>
-<!--
-   This template created by Meralesson.com
-   This template only use for educational purpose
--->
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 	<head>
 		<title>twitter</title>
 		<meta charset="UTF-8" />
@@ -60,12 +57,12 @@ require_once 'core/init.php';
 		<div class="content-right">
 			<!-- Log In Section -->
 			<div class="login-wrapper">
-      <?php include 'includes/login.php';?>
+      <?php require_once 'includes/login.php';?>
 			</div><!-- log in wrapper end -->
 
 			<!-- SignUp Section -->
 			<div class="signup-wrapper">
-        <?php include 'includes/signup-form.php';?>
+        <?php require_once 'includes/signup-form.php';?>
 			</div>
 			<!-- SIGN UP wrapper end -->
 
