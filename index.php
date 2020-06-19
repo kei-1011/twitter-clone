@@ -12,7 +12,7 @@ require_once 'core/init.php';
 	<!--Helvetica Neue-->
 <body>
 <div class="front-img">
-	<img src="assets/images/background.jpg"></img>
+	<!-- <img src="assets/images/background.jpg"></img> -->
 </div>
 
 <div class="wrapper">
@@ -50,7 +50,7 @@ require_once 'core/init.php';
 		<div class="content-left">
 			<h1>Welcome to Tweety.</h1>
 			<br/>
-			<p>A place to connect with your friends — and Get updates from the people you love, And get the updates from the world and things that interest you.</p>
+			<p>世界でいま起きていること、人々が話していることをリアルタイムで映します</p>
 		</div><!-- content left ends -->
 
 		<!-- content right ends -->
