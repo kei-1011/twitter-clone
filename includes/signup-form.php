@@ -19,7 +19,8 @@ if(isset($_POST['signup'])) {
       if($getFromU->checkEmail($email) === true) {
         $error = 'このメールアドレスは既に使用されています。';
       } else {
-
+        $getFromU->register($email, $screenName, $password);
+        header('Location:home.php');
       }
     }
   }

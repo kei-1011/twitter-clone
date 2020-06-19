@@ -34,6 +34,19 @@ class User {
     }
   }
 
+  // サインアップ
+  public function register($email,$screenName,$password) {
+    $password = md5($password);
+    $stmt = $this->pdo->prepare("INSERT INTO users (`username`,`email`,`password`,`screenName`,`profileImage`,`profileCover`,`following`,`followers`,`bio`,`country`,`website`) VALUES (:screenName,:email, :password, :screenName, '/assets/images/defaultProfileImage.png', '/assets/images/defaultCoverImage.png','0','0','','','')");
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+    $stmt->bindParam(':screenName', $screenName, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $user_id = $this->pdo->lastInsertId();
+    $_SESSION['user_id'] = $user_id;
+  }
+
   // ユーザー情報を取得
   public function userData($user_id) {
     $stmt = $this->pdo->prepare("SELECT * FROM users WHERE user_id = :user_id");
