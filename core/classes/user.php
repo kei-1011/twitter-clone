@@ -77,6 +77,26 @@ class User {
 		}
 	}
 
+  public function update($table, $user_id, $fields = array()) {
+    $columns  = '';
+    $i        = 1;
+
+  foreach($fields as $name => $value) {
+    $columns .= "`{$name}` = :{$name}";
+    if($i < count($fields)) {
+      $columns .= '. ';
+    }
+  }
+
+  $sql = "UPDATE {$table} SET {$columns} where `user_id` = {$user_id}";
+  if($stmt = $this->pdo->prepare($sql)) {
+    foreach($fields as $key => $value) {
+      $stmt->bindValue(':'.$key, $value);
+    }
+    $stmt->execute();
+  }
+}
+
   // メールアドレスの存在チェック
   public function checkEmail($email) {
     $stmt = $this->pdo->prepare("SELECT email FROM users WHERE email = :email");
