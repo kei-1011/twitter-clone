@@ -19,19 +19,7 @@ if(isset($_POST['signup'])) {
       if($getFromU->checkEmail($email) === true) {
         $error = 'このメールアドレスは既に使用されています。';
       } else {
-        $getFromU->create('users', array(
-          'username' => 'kou',
-          'email' => $email,
-          'password' => md5($password),
-          'screenName' => $screenName,
-          'profileImage' => '/assets/images/defaultProfileImage.png',
-          'profileCover' => '/assets/images/defaultCoverImage.png',
-          'following' => '0',
-          'follower' => '0',
-          'bio' => '',
-          'country' => '',
-          'website' => '',
-        ));
+        $getFromU->register($email,$screenName,$password);
         header('Location: includes/signup.php?step=1');
       }
     }
