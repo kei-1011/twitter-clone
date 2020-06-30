@@ -41,7 +41,7 @@ if(isset($_GET['step']) === true && empty($_GET['step'] === false )) {
 	<div class="nav-container">
 		<div class="nav-second">
 			<ul>
-				<li><a href="#"<i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 			</ul>
 		</div><!-- nav second ends-->
 	</div><!-- nav container ends -->
@@ -54,7 +54,7 @@ if(isset($_GET['step']) === true && empty($_GET['step'] === false )) {
 	<div class="main-container">
 		<!-- step wrapper-->
 
-    <?php if($_GET['step'] === '1') {?>
+    <?php if($_GET['step'] === '1') : ?>
  		<div class="step-wrapper">
 		    <div class="step-container">
 				<form method="post">
@@ -74,8 +74,9 @@ if(isset($_GET['step']) === true && empty($_GET['step'] === false )) {
 				 </form>
 			</div>
 		</div>
-    <?php } ?>
-    <?php if($_GET['step'] === '2') { ?>
+    <?php endif; ?>
+
+    <?php if($_GET['step'] === '2') : ?>
       <div class='lets-wrapper'>
         <div class='step-letsgo'>
           <h2>We're glad you're here, <?php echo $user->screenName;?></h2>
@@ -89,7 +90,7 @@ if(isset($_GET['step']) === true && empty($_GET['step'] === false )) {
           </span>
         </div>
       </div>
-    <?php } ?>
+    <?php endif; ?>
 
 	</div><!-- main container end -->
 
