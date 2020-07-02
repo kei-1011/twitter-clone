@@ -58,8 +58,8 @@ if(isset($_GET['step']) === true && empty($_GET['step'] === false )) {
  		<div class="step-wrapper">
 		    <div class="step-container">
 				<form method="post">
-					<h2>Choose a Username</h2>
-					<h4>Don't worry, you can always change it later.</h4>
+					<h2>ユーザー名を入力してください。</h2>
+					<h4>後から変更が可能です。</h4>
 					<div>
 						<input type="text" name="username" placeholder="Username"/>
 					</div>
@@ -79,11 +79,11 @@ if(isset($_GET['step']) === true && empty($_GET['step'] === false )) {
     <?php if($_GET['step'] === '2') : ?>
       <div class='lets-wrapper'>
         <div class='step-letsgo'>
-          <h2>We're glad you're here, <?php echo $user->screenName;?></h2>
-          <p>Tweety is a constantly updating stream of the coolest, most important news, media, sports, TV, conversations and more--all tailored just for you.</p>
+          <h2>ようこそ、 <?php echo $user->screenName;?>さん！</h2>
+          <p>Tweetyは、クールで最も重要なニュース、メディア、スポーツ、テレビ、会話など、あなたのためだけに作られたストリームを常に更新しています。</p>
           <br/>
           <p>
-            Tell us about all the stuff you love and we'll help you get set up.
+          お好きなものを教えていただければ、セットアップのお手伝いをさせていただきます。
           </p>
           <span>
             <a href='../home.php' class='backButton'>Let's go!</a>
