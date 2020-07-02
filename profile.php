@@ -15,10 +15,6 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false ) {
   }
 }
 ?>
-<!--
-   This template created by Meralesson.com
-   This template only use for educational purpose
--->
 <!doctype html>
 <html>
 	<head>
@@ -38,9 +34,9 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false ) {
     	<div class="nav">
 		<div class="nav-left">
 			<ul>
-				<li><a href="<?php echo BASE_URL; ?>home.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-				<li><a href="<?php echo BASE_URL; ?>i/notifications"><i class="fa fa-bell" aria-hidden="true"></i>Notification</a></li>
-				<li><i class="fa fa-envelope" aria-hidden="true"></i>Messages</li>
+				<li><a href="<?php echo BASE_URL; ?>home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+				<li><a href="<?php echo BASE_URL; ?>i/notifications"><i class="fa fa-bell" aria-hidden="true"></i></a></li>
+				<li><i class="fa fa-envelope" aria-hidden="true"></i></li>
 			</ul>
 		</div><!-- nav left ends-->
 		<div class="nav-right">
@@ -62,7 +58,7 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false ) {
 					</div>
 				</div>
 				</li>
-				<li><label for="pop-up-tweet" class="addTweetBtn">Tweet</label></li>
+				<li><label for="pop-up-tweet" class="addTweetBtn">ツイート</label></li>
 			</ul>
 		</div><!-- nav right ends-->
 
@@ -82,7 +78,7 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false ) {
 	<ul>
 		<li>
 		<div class="n-head">
-			TWEETS
+			ツイート
 		</div>
 		<div class="n-bottom">
 		  0
@@ -91,7 +87,7 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false ) {
 		<li>
 			<a href="<?php echo BASE_URL.$profileData->username; ?>/following">
 				<div class="n-head">
-					<a href="<?php echo BASE_URL.$profileData->username; ?>/following">FOLLOWING</a>
+					<a href="<?php echo BASE_URL.$profileData->username; ?>/following">フォロー</a>
 				</div>
 				<div class="n-bottom">
 					<span class="count-following"><?php echo $profileData->following; ?></span>
@@ -101,7 +97,7 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false ) {
 		<li>
 		 <a href="<?php echo BASE_URL.$profileData->username; ?>/followers">
 				<div class="n-head">
-					FOLLOWERS
+					フォロワー
 				</div>
 				<div class="n-bottom">
 					<span class="count-followers"><?php echo $profileData->followers; ?></span>
@@ -111,7 +107,7 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false ) {
 		<li>
 			<a href="#">
 				<div class="n-head">
-					LIKES
+					いいね
 				</div>
 				<div class="n-bottom">
 					0
@@ -121,7 +117,7 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false ) {
 	</ul>
 	<div class="edit-button">
 		<span>
-			<button class="f-btn follow-btn"  data-follow="user_id" data-user="user_id"><i class="fa fa-user-plus"></i> Follow </button>
+			<button class="f-btn follow-btn"  data-follow="user_id" data-user="user_id"><i class="fa fa-user-plus"></i> フォローする </button>
 		</span>
 	</div>
     </div>
