@@ -124,4 +124,14 @@ class User {
       return false;
     }
   }
+
+  // usernameからidを取得
+  public function userIdByUsername($username) {
+    $stmt = $this->pdo->prepare("SELECT user_id FROM users WHERE username = :username");
+    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_OBJ);
+
+    return $user->user_id;
+  }
 }

@@ -24,9 +24,9 @@ $user = $getFromU->userData($user_id);
 
 		<div class="nav-left">
 			<ul>
-				<li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-				<li><a href="i/notifications"><i class="fa fa-bell" aria-hidden="true"></i>Notification</a></li>
-				<li><i class="fa fa-envelope" aria-hidden="true"></i>Messages</li>
+				<li><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+				<li><a href="i/notifications"><i class="fa fa-bell" aria-hidden="true"></i></a></li>
+				<li><i class="fa fa-envelope" aria-hidden="true"></i></li>
 			</ul>
 		</div><!-- nav left ends-->
 
@@ -44,14 +44,14 @@ $user = $getFromU->userData($user_id);
 				<div class="drop-wrap">
 					<div class="drop-inner">
 						<ul>
-							<li><a href="<?php echo $user->username; ?>"><?php echo $user->username; ?></a></li>
+							<li><a href="profile.php?username=<?php echo $user->username; ?>"><?php echo $user->username; ?></a></li>
 							<li><a href="settings/account">Settings</a></li>
 							<li><a href="includes/logout.php">Log out</a></li>
 						</ul>
 					</div>
 				</div>
 				</li>
-				<li><label class="addTweetBtn">Tweet</label></li>
+				<li><label class="addTweetBtn">ツイート</label></li>
 			</ul>
 		</div><!-- nav right ends-->
 
@@ -82,7 +82,7 @@ $user = $getFromU->userData($user_id);
 					</div><!--  in b box end-->
 					<div class="info-body-name">
 						<div class="in-b-name">
-							<div><a href="<?php echo $user->username; ?>"><?php echo $user->screenName; ?></a></div>
+							<div><a href="profile.php?username=<?php echo $user->username; ?>"><?php echo $user->screenName; ?></a></div>
 							<span><small><a href="<?php echo $user->username; ?>">@<?php echo $user->username; ?></a></small></span>
 						</div><!-- in b name end-->
 					</div><!-- info body name end-->
@@ -91,7 +91,7 @@ $user = $getFromU->userData($user_id);
 					<div class="number-wrapper">
 						<div class="num-box">
 							<div class="num-head">
-								TWEETS
+								ツイート
 							</div>
 							<div class="num-body">
 								10
@@ -99,7 +99,7 @@ $user = $getFromU->userData($user_id);
 						</div>
 						<div class="num-box">
 							<div class="num-head">
-								FOLLOWING
+								フォロー
 							</div>
 							<div class="num-body">
 								<span class="count-following"><?php echo $user->following;?></span>
@@ -107,7 +107,7 @@ $user = $getFromU->userData($user_id);
 						</div>
 						<div class="num-box">
 							<div class="num-head">
-								FOLLOWERS
+								フォロワー
 							</div>
 							<div class="num-body">
 								<span class="count-followers"><?php echo $user->followers;?></span>
