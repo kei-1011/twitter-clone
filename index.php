@@ -1,5 +1,8 @@
 <?php
 require_once 'core/init.php';
+if(isset($_SESSION['user_id'])) {
+	header('Location: home.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">

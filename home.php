@@ -44,7 +44,7 @@ $user = $getFromU->userData($user_id);
 				<div class="drop-wrap">
 					<div class="drop-inner">
 						<ul>
-							<li><a href="<?php echo $user->username; ?>"><?php echo $user->username; ?></a></li>
+							<li><a href="profile.php?username=<?php echo $user->username; ?>"><?php echo $user->username; ?></a></li>
 							<li><a href="settings/account">Settings</a></li>
 							<li><a href="includes/logout.php">Log out</a></li>
 						</ul>
@@ -82,7 +82,7 @@ $user = $getFromU->userData($user_id);
 					</div><!--  in b box end-->
 					<div class="info-body-name">
 						<div class="in-b-name">
-							<div><a href="<?php echo $user->username; ?>"><?php echo $user->screenName; ?></a></div>
+							<div><a href="profile.php?username=<?php echo $user->username; ?>"><?php echo $user->screenName; ?></a></div>
 							<span><small><a href="<?php echo $user->username; ?>">@<?php echo $user->username; ?></a></small></span>
 						</div><!-- in b name end-->
 					</div><!-- info body name end-->
