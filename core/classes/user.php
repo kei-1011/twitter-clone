@@ -60,7 +60,7 @@ class User {
     $_SESSION = array();
     session_destroy();
 
-    header("Location: ../index.php");
+    header("Location: ".BASE_URL."index.php");
   }
 
 	public function create($table, $fields = array()){
@@ -111,6 +111,10 @@ class User {
     }
   }
 
+  public function loggedIn() {
+    return(isset($_SESSION['user_id'])) ? true : false;
+  }
+
   // メールアドレスの存在チェック
   public function checkUsername($username) {
     $stmt = $this->pdo->prepare("SELECT username FROM users WHERE username = :username");
@@ -133,5 +137,16 @@ class User {
     $user = $stmt->fetch(PDO::FETCH_OBJ);
 
     return $user->user_id;
+  }
+
+  public function userProfileUpdate($user_id,$screenName,$profileBio,$country,$website) {
+  $stmt = $this->pdo->prepare("UPDATE users SET `screenName` = :name, `bio` = :bio, `country` = :country, `website` = :website where `user_id` = :user_id");
+
+  $stmt->bindParam(':name', $screenName);
+  $stmt->bindParam(':bio', $profileBio);
+  $stmt->bindParam(':country', $country);
+  $stmt->bindParam(':website', $website);
+  $stmt->bindParam(':user_id', $user_id);
+  $stmt->execute();
   }
 }
