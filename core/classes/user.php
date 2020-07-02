@@ -138,4 +138,15 @@ class User {
 
     return $user->user_id;
   }
+
+  public function userProfileUpdate($user_id,$screenName,$profileBio,$country,$website) {
+  $stmt = $this->pdo->prepare("UPDATE users SET `screenName` = :name, `bio` = :bio, `country` = :country, `website` = :website where `user_id` = :user_id");
+
+  $stmt->bindParam(':name', $screenName);
+  $stmt->bindParam(':bio', $profileBio);
+  $stmt->bindParam(':country', $country);
+  $stmt->bindParam(':website', $website);
+  $stmt->bindParam(':user_id', $user_id);
+  $stmt->execute();
+  }
 }

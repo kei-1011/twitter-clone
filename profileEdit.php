@@ -1,5 +1,6 @@
 <?php
   include 'core/init.php';
+
   if($getFromU->loggedIn() === false) {
     header('Location: index.php');
   }
@@ -7,6 +8,26 @@
   $user_id  = $_SESSION['user_id'];
   $user     = $getFromU->userData($user_id);
 
+  if(isset($_POST['screenName'])) {
+    if(!empty($_POST['screenName'])) {
+      $screenName = $getFromU->checkInput($_POST['screenName']);
+      $profileBio = $getFromU->checkInput($_POST['bio']);
+      $country = $getFromU->checkInput($_POST['country']);
+      $website = $getFromU->checkInput($_POST['website']);
+      if(strlen($screenName) > 20) {
+        $error = "名前は6文字以上20文字以内で入力してください。";
+      } elseif(strlen($profileBio) > 120 ) {
+        $error = "プロフィール文が長すぎます。";
+      } elseif(strlen($country) > 80 ) {
+        $error = "国の名前が長すぎます。";
+      } else {
+        $getFromU->userProfileUpdate($user_id,$screenName,$profileBio,$country,$website);
+        header("Location: $user->username");
+      }
+    } else {
+      $error = "名前は空欄にすることができません。";
+    }
+  }
 ?>
 <!doctype html>
 <html>
@@ -142,7 +163,7 @@
 				</a>
 			</li>
 
-		</ul>
+    </ul>
 		<div class="edit-button">
 			<span>
 				<button class="f-btn" type="button" value="Cancel">キャンセル</button>
@@ -155,7 +176,6 @@
 	</div>
 </div>
 </div><!--Profile Cover End-->
-
 <div class="in-wrapper">
 <div class="in-full-wrap">
   <div class="in-left">
@@ -233,7 +253,13 @@
 									<input type="text" name="website" placeholder="Website" value="<?php echo $user->website;?>"/>
 								</div>
 							</li>
-				</form>
+        </form>
+        <script>
+            $('#save').on('click',function() {
+              $('#editForm').submit();
+            });
+        </script>
+
 						</ul>
 					</div>
 				</div>
