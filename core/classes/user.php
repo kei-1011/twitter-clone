@@ -115,7 +115,7 @@ class User {
     return(isset($_SESSION['user_id'])) ? true : false;
   }
 
-  // メールアドレスの存在チェック
+  // ユーザー名の存在チェック
   public function checkUsername($username) {
     $stmt = $this->pdo->prepare("SELECT username FROM users WHERE username = :username");
     $stmt->bindParam(':username',$username, PDO::PARAM_STR);
@@ -129,6 +129,19 @@ class User {
     }
   }
 
+  // パスワードの存在チェック
+  public function checkPassword($password) {
+    $stmt = $this->pdo->prepare("SELECT password FROM users WHERE password = :password");
+    $stmt->bindParam(':password',md5($password), PDO::PARAM_STR);
+    $stmt->execute();
+
+    $count = $stmt->rowCount();
+    if($count > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   // usernameからidを取得
   public function userIdByUsername($username) {
     $stmt = $this->pdo->prepare("SELECT user_id FROM users WHERE username = :username");
