@@ -139,6 +139,7 @@ class User {
     return $user->user_id;
   }
 
+  // ユーザー情報を更新
   public function userProfileUpdate($user_id,$screenName,$profileBio,$country,$website) {
   $stmt = $this->pdo->prepare("UPDATE users SET `screenName` = :name, `bio` = :bio, `country` = :country, `website` = :website where `user_id` = :user_id");
 
@@ -177,4 +178,14 @@ class User {
       $GLOBALS['imageError'] = "The extension is not allowed";
     }
   }
+
+    // アカウント情報を更新
+    public function accountUpdate($user_id,$username,$email) {
+      $stmt = $this->pdo->prepare("UPDATE users SET `username` = :username, `email` = :email where `user_id` = :user_id");
+
+      $stmt->bindParam(':username', $username);
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':user_id', $user_id);
+      $stmt->execute();
+      }
 }

@@ -4,7 +4,7 @@ require_once 'classes/user.php';
 require_once 'classes/follow.php';
 require_once 'classes/tweet.php';
 
-// ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 
 global $pdo;
 
