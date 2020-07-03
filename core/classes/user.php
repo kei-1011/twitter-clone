@@ -192,13 +192,22 @@ class User {
     }
   }
 
-    // アカウント情報を更新
-    public function accountUpdate($user_id,$username,$email) {
-      $stmt = $this->pdo->prepare("UPDATE users SET `username` = :username, `email` = :email where `user_id` = :user_id");
+  // アカウント情報を更新
+  public function accountUpdate($user_id,$username,$email) {
+    $stmt = $this->pdo->prepare("UPDATE users SET `username` = :username, `email` = :email where `user_id` = :user_id");
 
-      $stmt->bindParam(':username', $username);
-      $stmt->bindParam(':email', $email);
-      $stmt->bindParam(':user_id', $user_id);
-      $stmt->execute();
-      }
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+    }
+
+  public function search($search) {
+    $stmt = $this->pdo->prepare("SELECT user_id,username,screenName,profileImage,profileCover FROM users WHERE username LIKE ? OR screenName LIKE ? ");
+    $stmt->bindValue(1,$search.'%', PDO::PARAM_STR);
+    $stmt->bindValue(2,$search.'%', PDO::PARAM_STR);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+  }
 }
