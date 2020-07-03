@@ -64,6 +64,8 @@ if($getFromU->loggedIn() === false) {
 
 </div><!-- header wrapper end -->
 
+<script src="/assets/js/search.js"></script>
+
 <!---Inner wrapper-->
 <div class="inner-wrapper">
 <div class="in-wrapper">
