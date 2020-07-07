@@ -210,4 +210,14 @@ class User {
 
     return $stmt->fetchAll(PDO::FETCH_OBJ);
   }
+
+  public function tweet($status,$user_id,$tweetImage,$datetime) {
+    $stmt = $this->pdo->prepare("INSERT INTO tweets (`status`,`tweetBy`,`tweetImage`,`postedOn`) VALUES ()");
+    // $stmt = $this->pdo->prepare("INSERT INTO tweets (`status`,`tweetBy`,`tweetImage`,`postedOn`) VALUES (:status,:tweetBy,:tweetImage,:postedOn)");
+    $stmt->bindParam(':status', $status,PDO::PARAM_STR);
+    $stmt->bindParam(':tweetBy', $user_id,PDO::PARAM_INT);
+    $stmt->bindParam(':tweetImage', $tweetImage,PDO::PARAM_STR);
+    $stmt->bindParam(':postedOn', $datetime,PDO::PARAM_STR);
+    $stmt->execute();
+  }
 }
