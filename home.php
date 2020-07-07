@@ -5,6 +5,26 @@ $user = $getFromU->userData($user_id);
 if($getFromU->loggedIn() === false) {
 	header("Location: index.php");
 }
+
+if(isset($_POST['tweet'])) {
+	$status = $getFromU->checkInput($_POST['status']);
+	$tweetImage = '';
+	if(!empty($status) || !empty($_FILES['file']['name'][0])) {
+		if(!empty($_FILES['file']['name'][0])) {
+			$tweetImage = $getFromU->uploadImage($_FILES['file']);
+		}
+
+		if(strlen($status) > 140 ) {
+			$error = '140文字以内で入力してください。';
+		}
+$datetime = date('Y-m-d H:i:s');
+
+		$getFromU->tweet($status,$user_id,$tweetImage,$datetime);
+		// $getFromU->create('tweets', array('status' => $status, 'tweetBy' => $user_id, 'tweetImage' => $tweetImage, 'postedOn' => date('Y-m-d H:i:s')));
+	} else {
+		$error = 'タイプまたは画像を選択してツイートしてください。';
+	}
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">
@@ -153,7 +173,7 @@ if($getFromU->loggedIn() === false) {
 						 		<ul>
 						 			<input type="file" name="file" id="file"/>
 						 			<li><label for="file"><i class="fa fa-camera" aria-hidden="true"></i></label>
-						 			<span class="tweet-error"></span>
+						 			<span class="tweet-error"><?php if(isset($error)) { echo $error; } elseif(isset($imageError)) { echo $imageError; }?></span>
 						 			</li>
 						 		</ul>
 						 	</div>
